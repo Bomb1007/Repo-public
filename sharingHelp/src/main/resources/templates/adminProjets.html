@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gérer projets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .project-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 90%;
+            max-width: 600px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+        }
+
+        .project-body {
+            padding: 15px;
+        }
+
+        .project-body img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-body img:hover {
+            opacity: 0.8;
+        }
+
+        .project-details {
+            margin-top: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .project-details div {
+            margin-bottom: 10px;
+        }
+
+        .project-dates {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .arrow-tunnel {
+            position: relative;
+            width: 100px; /* Adjust as necessary */
+            height: 10px; /* Tunnel height */
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: -3px; /* Adjust to center the arrow vertically */
+            left: 0;
+            content: '➤';
+            animation: slide 4s linear infinite;
+            font-size: 16px; /* Adjust arrow size */
+        }
+
+        @keyframes slide {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 100px; /* Same as the width of the tunnel */
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-actions {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 20px;
+            background: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+
+        .project-actions button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .project-actions button:hover {
+            background: #45a049;
+        }
+
+        .project-actions .fa {
+            margin-right: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <div class="content-wrap">
+        <div th:replace="headerAdmin :: headerAdmin"></div>
+        <div>
+            <form th:action="@{/rechercher/projets}" class="form-inline m-3">
+                Recherche:&nbsp;
+                <input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary" onclick="clearFilter()">
+                    <i class="fa-solid fa-eraser"></i>
+                </button>
+            </form>
+        </div>
+        <div class="main_row1">
+            <div><h1>Espace administrateur</h1></div>
+            <div class="deconnection"><a th:href="@{/creerProjetForm}"><Button type="button" class="btn btn-light" style="font-size: 25px;">Créer un nouveau projet</Button></a></div>
+        </div>
+        <div class="main_row2">
+            <div><h2>Liste projets</h2></div>
+        </div>
+        <div class="projects-container">
+            <div class="project-container" th:each="projet : ${listProjet}">
+                <div class="project-header">
+                    Titre du Projet: <span th:text="${projet.titre}"></span>
+                </div>
+                <div class="project-body">
+                    <img th:src="@{${'/Img/communaute'+projet.id+'.webp'}}" th:alt="${projet.titre}" >
+                    <div class="project-details">
+                        <div class="project-dates">
+                            <span><strong>Date de Début:</strong> 2024-05-01</span>
+                            <div class="arrow-tunnel">
+                                <div class="arrow"></div>
+                            </div>
+                            <span><strong>Date de Fin:</strong> 2024-12-31</span>
+                        </div>
+                        <div><strong>Id:</strong><span th:text="${projet.id}"></span> </div>
+                        <div><strong>Description:</strong> <span th:text="${projet.description}"></span></div>
+                        <div><strong>Objectifs:</strong> <span th:text="${projet.objectifs}"></span></div>
+                        <div><strong>Ressources Nécessaires:</strong> <span th:text="${projet.ressourcesNecessaires}"></span></div>
+                        <div><strong>Progression Actuelle:</strong> <span th:text="${projet.progressionActuelle}"></span></div>
+                        <div><strong>Impact Attendu:</strong> <span th:text="${projet.impactAttendu}"></span></div>
+                        <div><strong>Créateur:</strong> <span th:text="${projet.createur.username}"></span></div>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <form th:action="@{/adminProjetsMembres}"  method="post">
+                        <div  title="Dialog box">
+                            <input type="hidden"  name="id" th:value="${projet.id}"/>
+                        </div>
+                        <input type="submit" name="operation" value="Voir membres" />
+                    </form>
+
+                    <form th:action="@{/adminProjetsUpdate}"  method="post">
+                        <div title="Dialog box">
+                            <input  type="hidden" name="id" th:value="${projet.id}"/>
+                        </div>
+                        <input type="submit"  name="operation"  value="modifier" />
+                    </form>
+
+                    <form th:action="@{/adminProjetsDelete}"  method="post">
+                        <div      id="dialog" title="Dialog box">
+                            <input type="hidden" name="id" th:value="${projet.id}"/>
+                        </div>
+                        <input type="submit" name="operation"  value="supprimer" style="color: #fff; background-color: #F44336; border-color: #F44336;" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        </c:otherwise>
+        </c:choose>
+    </div>
+    <div th:replace="footer :: footer"></div>
+</div>
+<script>
+    function clearFilter() {
+        window.location = "[[@{/adminProjets}]]";
+    }
+
+</script>
+<!-- Intégration de Bootstrap JS et dépendances -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

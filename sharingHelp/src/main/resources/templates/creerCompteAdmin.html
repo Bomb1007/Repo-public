@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer compte</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="page-container">
+    <div class="content-wrap">
+        <div th:replace="headerAdmin :: headerAdmin"></div>
+        <div class="main_row1">
+            <div><h1>Espace administrateur</h1></div>
+        </div>
+        <br>
+        <br>
+        <div class="container py-5">
+            <form th:action="@{/adminComptesCreate}" method="post" th:object="${compte}" enctype="multipart/form-data" onsubmit="return checkEmailUnique(this);">
+                <div class="card custom-card">
+                    <div class="card-header custom-card-header text-center">
+                        Compte
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Nom :</label>
+                            <input type="text" name="nom" class="form-control custom-form-control" th:field="*{nom}"  placeholder="Doe" required/>
+                        </div>
+
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Email :</label>
+                            <input type="hidden" name="id" th:field="*{id}"/>
+                            <input type="email" name="email" class="form-control custom-form-control" th:field="*{email}"  placeholder="example@example.com" required/>
+                        </div>
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Mot de passe :</label>
+                            <input type="password" name="password" class="form-control custom-form-control" th:field="*{password}"  placeholder="Password123" required/>
+                        </div>
+
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Nom d'utilisateur :</label>
+                            <input type="text" name="username" class="form-control custom-form-control" th:field="*{username}"  placeholder="@johndoe [ne pas mettre le @]" required/>
+                        </div>
+
+
+                        <div class="form-group form-file">
+                            <label for="formFileLg" class="form-label pe-3">Photo de profil :</label>
+                            <input name="fileImage" class="form-control custom-form-control" id="formFileLg" type="file" required/>
+                            <div class="small text-muted mt-2">Image PNG ou JPG. Taille du fichier maximale 50 MB</div>
+                        </div>
+
+                        <div class="text-center py-4">
+                            <button type="submit" class="btn custom-submit-btn">Créer compte</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade text-center" id="modalDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Avertissement</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkEmailUnique(form) {
+            $.ajax({
+                type : 'POST',
+                url :  '[[@{/comptes/check_email}]]',
+                data: {email:$("#email").val(),id:$("#id").val()},
+
+                success : function(data) {
+                    if(data==='OK'){
+                        form.submit();
+                    }else{
+                        showModalDialog("Avertissement", "Il y a déjà un compte avec le même email : " + $("#email").val())
+                    }
+                }
+            });
+
+            return false;
+        }
+
+        function showModalDialog(title, message) {
+            $("#modalTitle").text(title);
+            $("#modalBody").text(message);
+            $("#modalDialog").modal();
+
+        }
+    </script>
+    <div th:replace="footer :: footer"></div>
+</div>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/tilt/tilt.jquery.min.js"></script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

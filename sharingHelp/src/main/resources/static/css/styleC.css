@@ -1,0 +1,276 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 20 févr. 2024, 23 h 07 min 29 s
+    Author     : user
+*/
+
+/*Page Inscription*/
+body{
+    margin: 0%;
+}
+.optionMenu{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.optionMenu > div {
+    padding-top: 10px;
+    font-size: 28px;
+    text-align: center;
+    background-color: var(--color2);
+    border: 3px solid black;
+    flex-grow: 1
+}
+.optionMenu > div > a{
+    color: var(--color3);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.optionMenu > div > a:link { 
+    text-decoration: none;
+  } 
+
+.optionMenu > div:hover {
+    opacity: 0.9 ;
+    font-size: 29px;
+}
+.bgimgConnexInscr {
+    background-image: url('../Img/website_background_calm.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formConnexInscr {
+    background-color: rgba(255, 255, 255, 0.38);/*opacité 38% blanc*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Largeur du formulaire */
+    width: 50%;
+    /* Hauteur du formulaire */
+    height: 30%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#facebookLogo,
+#googleLogo {
+    width: 50px; /* Largeur de l'image */
+    height: 50px; /* Hauteur de l'image */
+}
+.noleftrightmargin{
+    margin-left: 0%;
+    margin-right: 0%;
+}
+#checkboxform{
+    margin-left: 0%;
+    margin-right: 0%;
+    text-align: left;
+}
+#googleButton,
+#facebookButton{
+    background-color: transparent; /* Fond du bouton transparent */
+    border: none; /* Supprimer les bordures du bouton */
+    width: 50px;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+#divLogo{
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.flex{
+    display: flex;
+}
+
+.formConnexInscr button,.formConnexInscr input {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+/*Page modifierProjet*/
+
+
+.bodyProjet{
+    background-color: #A0DBFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0%;
+}
+.formProjet{
+    background-color: #DBFCE1;
+    /* Largeur du formulaire */
+    width: 100%;
+    /* Hauteur du formulaire */
+    height: 30%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.formProjeTextarea {
+    margin: 5px;
+    height: 75px;
+    width: 75px;
+}
+.bluebackground{
+    background-color: #DEF3FF;
+}
+.block{
+    display: block;
+}
+.colonne{
+    display: flex;
+    flex-direction: column;
+}
+
+.boutonSoumettreAnnulerProjet{
+    background-color: #A0DBFF;
+    border-radius: 50px;
+    border: none;
+    padding: 5px 20px;
+}
+
+/*Page listeProjets*/
+#formProjetList{
+    width: 80%;
+    padding: 20px;
+}
+#scrollbarListe {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+#logoCreer,
+#logoDel,
+#logoModi{
+    width: 100%; /* Largeur de l'image */
+    height: 100%; /* Hauteur de l'image */
+    border-radius: 100%;
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas la largeur du bouton */
+    max-height: 100%;
+}
+
+#creerButton,
+#delButton,
+#modiButton{
+    background-color: transparent; /* Fond du bouton transparent */
+    border: none; /* Supprimer les bordures du bouton */
+    width: 50px;
+    height: 50px;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+#searchCommunity{
+    width: 100%;
+}
+#projetListDescrip p{
+    width: 100%;
+    height: 123px;
+    background-color: white;
+    margin: 0px;
+}
+#projetListDescrip{
+    height: 150px;
+    width: 100%;
+}
+#projetListDescrip h2{
+    margin: 0px;
+    width: 100%;
+    background-color: #A7EE85;
+
+}
+
+#creerButton:hover,
+#delButton:hover,
+#modiButton:hover{
+    background-color: greenyellow;
+}
+
+#photoProjet{
+    width: 150px; /* Largeur de l'image */
+    height: 150px; /* Hauteur de l'image */
+}
+
+/*Page unProjet*/
+#photoUnProjet{
+    width: 400px;
+    height: 400px;
+}
+#photoProfilComm{
+    width: 50px;
+    height: 50px;
+}
+
+#formDonation{
+    background-color: #E5FFEA;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    margin: 25px;
+}
+
+#commentDo{
+    border-radius: 10px;
+    width: 100%;
+}
+
+#commform{
+    width: 60%;
+    border-radius: 10px;
+    margin: 25px;
+    padding: 10px;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.Cinquantespace{
+    width: 50%;
+}
+
+.Centespace{
+    width: 100%;
+}
+
+#barreComm{
+    display: flex;
+    width: 100%;
+}
+
+#Objectifs,
+#Impact,
+#Ressources,
+#Progression{
+    padding: 25px;
+}
+
+#Objectifs,
+#Progression{
+    background-color: rgba(133, 252, 152, 0.33);
+}
+
+#Ressources,
+#Impact{
+    background-color: rgba(133, 209, 252, 0.33);
+}
+table{
+    border: 3px solid black;
+}

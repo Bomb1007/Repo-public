@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div>
+    <p th:if="${compte != null}" th:text="'Bonjour, ' + ${compte.nom} + '!'"></p>
+    <p th:if="${compte == null}">Bonjour, visiteur!</p>
+</div>
+<div id="whole_page_accueil">
+    <div th:replace="headerAdmin :: headerAdmin"></div>
+    <main id="main_page_accueil">
+        <div class="content1">
+            <div class="content1_right">
+                <div class="content1_titre">
+                    <h1>Notre Mission</h1>
+                </div>
+                <div class="content1_image">
+                    <img src="photos/people1.jpg" alt="">
+                </div>
+            </div>
+            <div class="content1_left">
+                <div><p>Notre association sans-but lucratif a pour seul et unique but d'aider toute communautés ou causes importantes avec l'aide de nos membres. Nous avons comme mission de rendre le monde une meilleure place pour nous et pour les futures générations. Nous reconnaissons la responsabilité qui nous ai attribuée et essayons d'agir avec transparance et de bonne foi. Nous valorisons toute donnation et aide offerte par nos membres.</p></div>
+            </div>
+        </div>
+
+        <div class="content2">
+            <div class="content2_right">
+                <div><p>Sharing Help a été bati sur nos valeurs fondamentales comme l'honneteté, l'entraide, la générosité et l'accomplissement. Ces valeurs qui nous définissent reflètent comment nous agissons. Notre but est d'agir en accordance avec nos valeurs et non de faire du profit ou d'accroitre notre organisation. Nous pensons qu'il est important de non seulement croire et avoir certaines valeurs qui définissent notre sens de vie mais aussi d'encadrer nos actions sur ces valeurs en changeant comment nous agissons, qui nous somme et comment on utilise les ressources à notre disposition en fonction de ces valeurs.</p></div>
+            </div>
+            <div class="content2_left">
+                <div class="content2_titre">
+                    <h1>Nos valeurs</h1>
+                </div>
+                <div class="content2_image">
+                    <img src="photos/people3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="content3">
+            <div class="content3_right">
+                <div class="content3_titre">
+                    <h1>Notre histoire</h1>
+                </div>
+                <div class="content3_image">
+                    <img src="photos/people2.jpg" alt="">
+                </div>
+            </div>
+            <div class="content3_left">
+                <div><p>Sharing Help a été fondé par quatre étudiants travaillant sur un projet de développement d'un site Web. Ces étudiants avait comme vision de créer un espace sociale qui permettrait aux personnes voulant offir de l'aide de se connecter et partager leurs propres histoires. Sharing Help n'est pas centré sur sa propre histoire mais sur celle de ses membres qui s'accroie de jour en jour. Nous reconnaissons que sans nos membres nous ne pourrions pas accomplir ce que nous voudrions accomplir. Nos utilisateurs sont la fondation de notre organisation et permettent de rendre le monde une meilleure place pour tous, de jour en jour.</p></div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="footer :: footer"></div>
+</div>
+</body>
+</html>

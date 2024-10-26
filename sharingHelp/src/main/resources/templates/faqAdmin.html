@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="page-container">
+    <div class="content-wrap">
+        <div th:replace="headerAdmin :: headerAdmin"></div>
+
+        <div class="container mt-5">
+            <h2>FAQ - Sharing Help</h2>
+            <div id="accordion">
+                <div class="card border-0">
+                    <div class="card-header bg-transparent border-0 p-0" id="heading1">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link faq-question" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                Pour s'inscrire sur la plateforme :
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+                        <div class="card-body faq-answer">
+                            Individus solidaires : remplissez le formulaire d'inscription avec vos informations.<br>
+                            Organisateurs de projet : remplissez un formulaire avec des détails sur le projet.<br>
+                            Associations ou ONG : contactez l'équipe pour obtenir un compte d'organisation.<br>
+                            Administrateurs de la plateforme : processus de sélection interne pour rejoindre l'équipe de gestion et obtenir des privilèges spéciaux de surveillance et de maintenance.
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="card border-0">
+                    <div class="card-header bg-transparent border-0 p-0" id="heading2">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link faq-question" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                Comment puis-je créer un projet solidaire ?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+                        <div class="card-body faq-answer">
+                            Pour créer un projet solidaire, inscrivez-vous sur la plateforme, accédez à "Créer un projet",
+                            remplissez les détails (description, objectifs), ajoutez des médias et définissez les besoins et la période de collecte de fonds. Publiez
+                            ensuite votre projet. Pour contribuer à un projet existant, explorez la liste des projets, choisissez celui qui vous intéresse, sélectionnez
+                            votre mode de contribution (financier, bénévole) et suivez les instructions pour effectuer votre contribution.
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0">
+                    <div class="card-header bg-transparent border-0 p-0" id="heading3">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link faq-question" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                Comment puis-je faire un don financier sur la plateforme ?
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+                        <div class="card-body faq-answer">
+                            Pour faire un don financier sur la plateforme, suivez ces étapes simples :<br>
+                            Trouvez un projet à soutenir : Parcourez la liste des projets disponibles sur la plateforme et choisissez celui auquel vous souhaitez faire un don.<br>
+                            Sélectionnez l'option de don : Sur la page du projet, recherchez l'option de don financier.<br>
+                            Choisissez le montant à donner : Indiquez le montant que vous souhaitez donner.<br>
+                            Sélectionnez le mode de paiement : Choisissez parmi les différentes méthodes de paiement sécurisées disponibles.<br>
+                            Finalisez votre transaction : Suivez les instructions pour finaliser votre don et confirmer votre contribution.<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0">
+                    <div class="card-header bg-transparent border-0 p-0" id="heading4">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link faq-question" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                Quels types de ressources puis-je partager sur la plateforme ?
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                        <div class="card-body faq-answer">
+                            Sur la plateforme, vous pouvez partager diverses ressources, notamment :<br>
+                            Histoires inspirantes : Partagez des anecdotes ou des réussites qui peuvent motiver les autres utilisateurs.<br>
+                            Conseils pratiques : Offrez des conseils sur la façon de mener à bien des projets solidaires ou sur des actions à entreprendre pour soutenir les causes.<br>
+                            Documents éducatifs : Mettez à disposition des ressources telles que des guides, des brochures ou des présentations pour sensibiliser les gens à des problématiques spécifiques.<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0">
+                    <div class="card-header bg-transparent border-0 p-0" id="heading5">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link faq-question" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                Comment puis-je contacter l'administrateur de la plateforme en cas de problème ?
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+                        <div class="card-body faq-answer">
+                            Si vous rencontrez des problèmes ou si vous avez besoin d'aide, voici comment contacter l'assistance de la plateforme :<br>
+                            Trouvez les informations de contact : Recherchez sur le site les coordonnées de l'assistance ou de l'équipe de support.<br>
+                            Utilisez le formulaire de contact : Envoyez un message en utilisant le formulaire de contact fourni, en expliquant votre problème de manière détaillée.<br>
+                            Envoyez un e-mail : Si vous disposez d'une adresse e-mail de support, envoyez un e-mail en exposant clairement votre situation.<br>
+                            Utilisez le chat en direct : Si disponible, utilisez la fonction de chat en direct pour obtenir une assistance immédiate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div th:replace="footer :: footer"></div>
+</div>
+<script>
+    var questions = document.getElementsByClassName("faq-question");
+    var i;
+
+    for (i = 0; i < questions.length; i++) {
+        questions[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var answer = this.nextElementSibling;
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        });
+    }
+</script>
+
+<!-- Intégration de Bootstrap JS et dépendances -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

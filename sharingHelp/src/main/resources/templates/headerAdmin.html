@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <style>
+        .message {
+            color: black;
+            font-size: 20px;
+            text-align: center;
+            display: block;
+            margin: 10px 0;
+        }
+        .marquee-container {
+            text-align: center;
+        }
+        marquee {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body th:fragment="headerAdmin">
+
+<header id="header_page_accueil" class="navbar-custom">
+    <div class="header-content">
+        <a class="navbar-brand" th:href="@{/A}">
+            <img th:src="@{/photos/logoSansFond.png}" alt="logo">
+        </a>
+        <div class="centre-header">Sharing Help</div>
+    </div>
+    <div class="bot-header">
+        <div class="menu-header">
+            <div><a th:href="@{/}">Accueil</a></div>
+            <div th:if="${session.compte != null}"><a th:href="@{/adminComptes}">Gérer comptes</a></div>
+            <div th:if="${session.compte != null}"><a th:href="@{/adminProjets}">Gérer projets</a></div>
+            <div><a th:href="@{/faqA}">FAQ</a></div>
+            <div th:if="${session.compte != null}"><a th:href="@{/deconnexion}">Déconnexion</a></div>
+            <div th:if="${session.compte == null}"><a th:href="@{/connexionForm}">Connexion</a></div>
+
+
+
+
+        </div>
+    </div>
+</header>
+
+
+<!-- Intégration de Bootstrap JS et dépendances -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

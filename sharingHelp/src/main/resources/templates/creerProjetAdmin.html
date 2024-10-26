@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer projet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="page-container">
+    <div class="content-wrap">
+        <div th:replace="headerAdmin :: headerAdmin"></div>
+        <div class="main_row1">
+            <div><h1>Espace administrateur</h1></div>
+        </div>
+        <br>
+        <br>
+        <div class="container py-5">
+            <form th:action="@{/adminProjetCreate}" method="post" th:object="${projet}" enctype="multipart/form-data"  >
+                <div class="card custom-card">
+                    <div class="card-header custom-card-header text-center">
+                        Projet
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Titre :</label>
+                            <input type="hidden" name="id" th:field="*{id}"/>
+                            <input type="text" name="titre" class="form-control custom-form-control" th:field="*{titre}" placeholder="" required/>
+                        </div>
+
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Description :</label>
+                            <input type="textarea" name="description" class="form-control custom-form-control" th:field="*{description}" placeholder="" required />
+                        </div>
+                        <div class="form-group label-input-group">
+                            <label class="form-label">Nom d'utilisateurs du createur :</label>
+                            <select class="form-control custom-form-control" name="idCreateur" title = "Choisissez une createur" required>
+                                <th:block th:each="compte : ${listComptes}">
+                                    <option th:value="${compte.id}" th:text="${compte.username}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group label-input-group">
+                            <label  class="form-label">Date début :</label>
+                            <input type="date" name="dateDebut" class="form-control custom-form-control"  placeholder="" required/>
+                        </div>
+                        <div class="form-group label-input-group">
+                            <label  class="form-label">Date fin :</label>
+                            <input type="date" name="dateFin" class="form-control custom-form-control"  placeholder="" required/>
+                        </div>
+                        <div class="form-group form-file">
+                            <label for="formFileLg" class="form-label pe-3">Photo :</label>
+                            <input name="fileImage" class="form-control custom-form-control" id="formFileLg" type="file"  required/>
+                            <div class="small text-muted mt-2">Image PNG ou JPG. Taille du fichier maximale 50 MB</div>
+                        </div>
+
+                        <div class="text-center py-4">
+                            <button type="submit" class="btn custom-submit-btn">Créer</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div th:replace="footer :: footer"></div>
+</div>
+<!-- Intégration de Bootstrap JS et dépendances -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

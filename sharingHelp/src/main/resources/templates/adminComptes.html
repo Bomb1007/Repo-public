@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gérer comptes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="jquery/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-profile {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-profile:hover {
+            transform: scale(1.05);
+        }
+        .card-header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .card-body {
+            border: 2px solid #4CAF50;
+            border-top: none;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-img-top {
+            object-fit: cover;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <div class="content-wrap">
+        <div th:replace="headerAdmin :: headerAdmin"></div>
+        <div>
+            <form th:action="@{/rechercher/comptes}" class="form-inline m-3">
+                Recherche:&nbsp;
+                <input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary" onclick="clearFilter()">
+                    <i class="fa-solid fa-eraser"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="main_row1">
+            <div><h1>Espace administrateur</h1></div>
+            <div class="deconnection"><a th:href="@{/creerCompteForm}"><Button type="button" class="btn btn-light" style="font-size: 25px;">Créer un nouveau Compte</Button></a></div>
+        </div>
+        <div class="main_row2">
+            <div><h2>Liste d'utilisateurs</h2></div>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div th:each="compte : ${listcomptes}" class="col-md-4">
+                    <div class="card card-profile mb-4" style="--user-color: [[${compte.usernameColor}]];">
+                        <div class="card-header">
+                            <h5 class="card-title">[[${compte.username}]]</h5>
+                        </div>
+                        <img th:src="@{'/'+${compte.photo}}" th:alt="${compte.username}" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text"><strong>ID:</strong> [[${compte.id}]]</p>
+                            <p class="card-text"><strong>Nom:</strong> [[${compte.nom}]]</p>
+                            <p class="card-text"><strong>Email:</strong> [[${compte.email}]]</p>
+                            <div class="d-flex justify-content-between mt-auto">
+                                <form th:action="@{/adminComptesUpdate}" method="post">
+                                    <input type="hidden" name="id" th:value="${compte.id}"/>
+                                    <input type="submit" name="operation" value="Modifier" class="btn btn-primary"/>
+                                </form>
+                                <form th:action="@{/adminComptesDelete}" method="post">
+                                    <input type="hidden" name="id" th:value="${compte.id}"/>
+                                    <input type="submit" name="operation" value="Supprimer" class="btn btn-danger"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </c:otherwise>
+        </c:choose>
+    </div>
+    <div th:replace="footer :: footer"></div>
+</div>
+<!-- Intégration de Bootstrap JS et dépendances -->
+<script>
+    function clearFilter() {
+        window.location = "[[@{/adminComptes}]]";
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
